@@ -36,7 +36,7 @@ spring:
     multipart:
       max-file-size: 10MB
 jwt:
-  secret_key: ${JWT_SECRET_KEY} // test-key
+  secret_key: ${JWT_SECRET_KEY} 
   access_exp: ${ACCESS_EXP}
   refresh_exp: ${REFRESH_EXP}
   header: ${HEADER}
