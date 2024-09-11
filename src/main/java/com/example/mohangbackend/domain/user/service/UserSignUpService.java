@@ -24,12 +24,18 @@ public class UserSignUpService {
             throw UserAlreadyExitsException.EXCEPTION;
         }
 
-        User user = User.builder()
+//        User user = userRepository.save(User.builder()
+//                .accountId(request.getAccountId())
+//                .password(passwordEncoder.encode(request.getPassword()))
+//                .phoneNumber(request.getPhoneNumber())
+//                .age(request.getAge())
+//                .build());
+         userRepository.save(User.builder()
                 .accountId(request.getAccountId())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .phoneNumber(request.getPhoneNumber())
                 .age(request.getAge())
-                .build();
-        userRepository.save(user);
+                .build());
+
     }
 }
