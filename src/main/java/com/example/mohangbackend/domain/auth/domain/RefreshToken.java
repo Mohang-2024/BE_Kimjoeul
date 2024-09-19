@@ -1,9 +1,8 @@
 package com.example.mohangbackend.domain.auth.domain;
 
 
-import jakarta.persistence.Id;
-
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
 
@@ -11,7 +10,7 @@ import org.springframework.data.redis.core.TimeToLive;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
-@RedisHash(value = "refresh_token", timeToLive = 7200)
+@RedisHash(value = "refresh_token")
 public class RefreshToken {
 
     @Id
