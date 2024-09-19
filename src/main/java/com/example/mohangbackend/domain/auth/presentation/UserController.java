@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/auth")
+@RequestMapping("/users")
 @RestController
 public class UserController {
 
@@ -26,11 +26,13 @@ public class UserController {
         userSignUpService.signup(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signin")
     public TokenResponse signIn(SignInRequest request) {
         return userSignInService.signIn(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/reissue")
     public TokenResponse reissue(@RequestHeader(name = "AUTHORIZATION_HEADER")String refreshToken) {
         return reissueService.userReissue(refreshToken);
