@@ -18,6 +18,7 @@ public class RefreshToken {
 
     private String refreshToken;
 
+    @TimeToLive
     private Long ttl;
 
     public void updateToken(String refreshToken, Long ttl) {
