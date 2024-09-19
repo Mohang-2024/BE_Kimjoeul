@@ -20,8 +20,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(length = 13)
     private String phoneNumber;
 
+    @Column(length = 4)
     private String age;
 
     @Builder
