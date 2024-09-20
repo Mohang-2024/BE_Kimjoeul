@@ -4,7 +4,6 @@ import com.example.mohangbackend.global.exception.error.CustomException;
 import com.example.mohangbackend.global.exception.error.ErrorCode;
 import com.example.mohangbackend.global.exception.error.ErrorResponse;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -26,8 +25,7 @@ public class GlobalExceptionHandler {
                         .status(errorCode.getStatus())
                         .message(errorCode.getMesssage())
                         .build(),
-                HttpStatusCode.valueOf(errorCode.getStatus())
-        );
+                HttpStatus.valueOf(errorCode.getStatus()));
     }
     @ExceptionHandler(BindException.class)
     public ResponseEntity<?> bindExceptionHandling(BindException e) {

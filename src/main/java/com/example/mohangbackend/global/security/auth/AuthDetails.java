@@ -13,7 +13,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class AuthDetails implements UserDetails {
 
-    private final User user;
+    private final String accountId;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -27,7 +27,7 @@ public class AuthDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getAccountId();
+        return accountId;
     }
 
     @Override
@@ -45,4 +45,6 @@ public class AuthDetails implements UserDetails {
         return true;
     }
 
+    @Override
+    public boolean isEnabled(){return true;}
 }
