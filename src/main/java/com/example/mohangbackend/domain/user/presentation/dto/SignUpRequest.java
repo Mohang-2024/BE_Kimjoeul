@@ -1,16 +1,17 @@
 package com.example.mohangbackend.domain.user.presentation.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Getter
 @NoArgsConstructor
 public class SignUpRequest {
 
-    @NotBlank(message = "띄어쓰기를 허용하지 않습니다.")
+    @NotBlank
     @Size(min = 3, max = 20, message = "3자에서 20자까지 입력 가능합니다.")
     private String accountId;
 
