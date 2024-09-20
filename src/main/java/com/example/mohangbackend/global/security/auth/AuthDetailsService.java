@@ -1,11 +1,11 @@
 package com.example.mohangbackend.global.security.auth;
 
+import com.example.mohangbackend.domain.user.domain.User;
 import com.example.mohangbackend.domain.user.domain.repository.UserRepository;
 import com.example.mohangbackend.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -15,11 +15,11 @@ public class AuthDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String accountId) throws UsernameNotFoundException {
-        return userRepository.findByAccountId(accountId)
-                .map(AuthDetails::new)
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+    public UserDetails loadUserByUsername(String accountId) {
+
+        User user = userRepository.findByAccountId(accountId)
+            .orElseThrow(()->UserNotFoundException.EXCEPTION);
+
+        return new AuthDetails(user.getAccountId());
     }
-
-
 }

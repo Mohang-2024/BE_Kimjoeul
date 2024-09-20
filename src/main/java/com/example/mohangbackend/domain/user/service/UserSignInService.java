@@ -6,12 +6,12 @@ import com.example.mohangbackend.domain.user.domain.User;
 import com.example.mohangbackend.domain.user.domain.repository.UserRepository;
 import com.example.mohangbackend.domain.user.exception.UserNotFoundException;
 import com.example.mohangbackend.domain.user.presentation.dto.SignInRequest;
-import com.example.mohangbackend.domain.user.presentation.dto.SignUpRequest;
 import com.example.mohangbackend.global.security.jwt.JwtTokenProvider;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -38,5 +38,4 @@ public class UserSignInService {
                 .refreshToken(refreshToken)
                 .build();
     }
-
 }
