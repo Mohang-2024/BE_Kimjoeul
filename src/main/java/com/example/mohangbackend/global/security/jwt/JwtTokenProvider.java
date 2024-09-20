@@ -2,21 +2,22 @@ package com.example.mohangbackend.global.security.jwt;
 
 import com.example.mohangbackend.domain.auth.domain.RefreshToken;
 import com.example.mohangbackend.domain.auth.domain.repository.RefreshTokenRepository;
-import com.example.mohangbackend.global.properties.JwtProperty;
 import com.example.mohangbackend.global.security.auth.AuthDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.SignatureAlgorithm;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Jwts;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @RequiredArgsConstructor
+@ConfigurationPropertiesScan
 @Component
 public class JwtTokenProvider {
 
@@ -80,7 +81,4 @@ public class JwtTokenProvider {
            throw InvalidJwtException.EXCEPTION;
        }
    }
-
-
-
 }

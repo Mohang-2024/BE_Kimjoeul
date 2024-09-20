@@ -1,12 +1,15 @@
-package com.example.mohangbackend.global.properties;
+package com.example.mohangbackend.global.security.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @Getter
 @AllArgsConstructor
-@ConfigurationProperties(prefix = "jwt")
+@ConfigurationProperties(prefix = "jwt", ignoreInvalidFields = false)
+@ConstructorBinding
 public class JwtProperty {
 
     private final String secretKey;

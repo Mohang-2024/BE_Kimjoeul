@@ -5,11 +5,12 @@ import com.example.mohangbackend.domain.auth.domain.repository.RefreshTokenRepos
 import com.example.mohangbackend.domain.auth.exception.InvalidRefreshTokenException;
 import com.example.mohangbackend.domain.auth.exception.RefreshTokenNotFoundException;
 import com.example.mohangbackend.domain.auth.presentation.dto.TokenResponse;
-import com.example.mohangbackend.global.properties.JwtProperty;
+import com.example.mohangbackend.global.security.jwt.JwtProperty;
 import com.example.mohangbackend.global.security.jwt.JwtTokenProvider;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @RequiredArgsConstructor
 @Service
