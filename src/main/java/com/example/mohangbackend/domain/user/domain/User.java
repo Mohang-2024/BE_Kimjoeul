@@ -1,20 +1,21 @@
 package com.example.mohangbackend.domain.user.domain;
 
-import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
+import javax.persistence.*;
+
+@Entity(name = "tbl_user")
 @Getter
 @NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(length = 20, nullable = false)
     private String accountId;
 
     @Column(nullable = false)
@@ -35,5 +36,4 @@ public class User {
         this.age = age;
 
     }
-
 }
