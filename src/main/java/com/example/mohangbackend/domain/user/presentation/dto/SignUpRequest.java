@@ -20,9 +20,11 @@ public class SignUpRequest {
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\\\\\\d~!@#$%^&*()+|=]{8,20}$")
     private String password;
 
+    @NotBlank
     @Size(max = 13, message = "13자까지 입력 가능합니다.")
     private String phoneNumber;
 
+    @NotBlank
     @Size(max = 4)
     private String age;
 }
