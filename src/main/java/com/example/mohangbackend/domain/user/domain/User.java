@@ -1,10 +1,9 @@
 package com.example.mohangbackend.domain.user.domain;
 
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Entity(name = "tbl_user")
 @Getter
