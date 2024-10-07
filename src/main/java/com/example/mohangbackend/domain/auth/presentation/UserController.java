@@ -8,9 +8,9 @@ import com.example.mohangbackend.domain.user.service.UserSignInService;
 import com.example.mohangbackend.domain.user.service.UserSignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RequestMapping("/users")
@@ -23,13 +23,13 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    public void signUp(@RequestBody @Valid SignUpRequest request) {
+    public void signUp(@RequestBody @Validated SignUpRequest request) {
         userSignUpService.signup(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signin")
-    public TokenResponse signIn(@RequestBody @Valid SignInRequest request) {
+    public TokenResponse signIn(@RequestBody @Validated SignInRequest request) {
         return userSignInService.signIn(request);
     }
 

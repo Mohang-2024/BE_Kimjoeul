@@ -1,12 +1,13 @@
 package com.example.mohangbackend.domain.auth.domain;
 
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
-import org.springframework.data.redis.core.TimeToLive;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -23,7 +24,6 @@ public class RefreshToken {
 
     private String refreshToken;
 
-    @TimeToLive
     private Long ttl;
 
     public void updateToken(String refreshToken, Long ttl) {
