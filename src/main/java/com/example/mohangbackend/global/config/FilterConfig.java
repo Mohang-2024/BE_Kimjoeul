@@ -1,6 +1,8 @@
 package com.example.mohangbackend.global.config;
 
 import com.example.mohangbackend.global.exception.ExceptionFilter;
+import com.example.mohangbackend.global.security.jwt.JwtTokenFilter;
+import com.example.mohangbackend.global.security.jwt.JwtTokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
@@ -14,14 +16,13 @@ import org.springframework.stereotype.Component;
 public class FilterConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
     private final ObjectMapper objectMapper;
+    private final JwtTokenProvider jwtTokenProvider;
+
 
     @Override
-    public void init(HttpSecurity http) throws Exception {
-    }
-
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http.addFilterBefore(new ExceptionFilter(objectMapper), UsernamePasswordAuthenticationFilter.class);
+    public void configure(HttpSecurity builder) {
+        builder.addFilterBefore(new JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+        builder.addFilterBefore(new ExceptionFilter(objectMapper), JwtTokenFilter.class);
     }
 
 }

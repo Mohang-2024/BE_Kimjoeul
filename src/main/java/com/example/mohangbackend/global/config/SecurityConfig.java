@@ -1,5 +1,6 @@
 package com.example.mohangbackend.global.config;
 
+import com.example.mohangbackend.global.security.jwt.JwtTokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,23 +20,24 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final ObjectMapper objectMapper;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    @Bean
-    protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(CsrfConfigurer::disable)
-                .cors(Customizer.withDefaults())
-                .sessionManagement(configuer -> configuer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorize ->
-                        authorize
-                                .anyRequest().permitAll()
-                        )
-                .apply(new FilterConfig(objectMapper));
-        return http.build();
-    }
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    @Bean
+    protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(CsrfConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .cors(Customizer.withDefaults())
+                .authorizeHttpRequests(authorize ->
+                        authorize
+                                .anyRequest().permitAll()
+                )
+                .apply(new FilterConfig(objectMapper, jwtTokenProvider));
 
+        return http.build();
+    }
 }
