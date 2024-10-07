@@ -11,10 +11,14 @@ public enum ErrorCode {
     EXPIRED_JWT(401, "Expired Jwt"),
     INVALID_JWT(401, "Invalid Jwt"),
     INVALID_REFRESH_TOKEN(401, "Invalid Refresh Token"),
-    USER_NOT_FOUND(404, "User Not Found"),
-    USER_ALREADY_EXIST(409, "User Already Exits"),
+    CANNOT_BE_DELETED(401, "Cannot Be Deleted"),
+    CANNOT_BE_MODIFIED(401, "Cannot Be Modified"),
 
     REFRESH_TOKEN_NOT_FOUND(404, "Refresh Token Not Found"),
+    USER_NOT_FOUND(404, "User Not Found"),
+    FEED_NOT_FOUND(404, "Feed Not Found"),
+
+    USER_ALREADY_EXIST(409, "User Already Exits"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 
